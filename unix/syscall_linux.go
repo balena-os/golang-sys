@@ -1993,6 +1993,22 @@ func Klogset(typ int, arg int) (err error) {
 	return nil
 }
 
+//sys	ioprioSet(which int, who int, prio int) (err error)
+
+func IoprioSet(which int, who int, class int, prio int) (err error) {
+	return ioprioSet(which, who, (((class) << IOPRIO_CLASS_SHIFT) | (prio)))
+}
+
+//sys	ioprioGet(which int, who int) (prio int, err error)
+
+func IoprioGet(which int, who int) (class int, prio int, err error) {
+	mask, err := ioprioGet(which, who)
+	if err != nil {
+		return 0, 0, err
+	}
+	return ((mask) >> IOPRIO_CLASS_SHIFT), ((mask) & IOPRIO_PRIO_MASK), nil
+}
+
 /*
  * Unimplemented
  */

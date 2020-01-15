@@ -2824,3 +2824,21 @@ const (
 	DEVLINK_DPIPE_HEADER_IPV4                 = 0x1
 	DEVLINK_DPIPE_HEADER_IPV6                 = 0x2
 )
+
+const (
+	IOPRIO_CLASS_NONE = 0
+	IOPRIO_CLASS_RT   = 1
+	IOPRIO_CLASS_BE   = 2
+	IOPRIO_CLASS_IDLE = 3
+)
+
+const (
+	IOPRIO_WHO_PROCESS = 1
+	IOPRIO_WHO_PGRP    = 2
+	IOPRIO_WHO_USER    = 3
+)
+
+const (
+	IOPRIO_CLASS_SHIFT = 13
+	IOPRIO_PRIO_MASK   = ((1 << IOPRIO_CLASS_SHIFT) - 1)
+)
